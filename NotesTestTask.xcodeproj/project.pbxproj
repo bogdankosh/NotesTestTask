@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43D477E51F743ECF0064172B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D477E41F743ECF0064172B /* NoteViewController.swift */; };
 		43F7AF801F73C0190020C389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF7F1F73C0190020C389 /* AppDelegate.swift */; };
-		43F7AF821F73C0190020C389 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF811F73C0190020C389 /* ViewController.swift */; };
 		43F7AF851F73C0190020C389 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F7AF831F73C0190020C389 /* Main.storyboard */; };
 		43F7AF881F73C0190020C389 /* NotesTestTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF861F73C0190020C389 /* NotesTestTask.xcdatamodeld */; };
 		43F7AF8A1F73C0190020C389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43F7AF891F73C0190020C389 /* Assets.xcassets */; };
 		43F7AF8D1F73C0190020C389 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F7AF8B1F73C0190020C389 /* LaunchScreen.storyboard */; };
+		43F7AF961F73C1A80020C389 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF951F73C1A80020C389 /* MainTableViewController.swift */; };
+		43F7AF981F73C1E50020C389 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF971F73C1E50020C389 /* MainTableViewCell.swift */; };
+		43F7AF9A1F73C2900020C389 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF991F73C2900020C389 /* Extensions.swift */; };
+		43F7AF9C1F73E1F30020C389 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF9B1F73E1F30020C389 /* Note.swift */; };
+		43F7AF9E1F7401330020C389 /* SampleGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF9D1F7401330020C389 /* SampleGeneration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43D477E41F743ECF0064172B /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		43F7AF7C1F73C0190020C389 /* NotesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F7AF7F1F73C0190020C389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		43F7AF811F73C0190020C389 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43F7AF841F73C0190020C389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43F7AF871F73C0190020C389 /* NotesTestTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotesTestTask.xcdatamodel; sourceTree = "<group>"; };
 		43F7AF891F73C0190020C389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43F7AF8C1F73C0190020C389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43F7AF8E1F73C0190020C389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43F7AF951F73C1A80020C389 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		43F7AF971F73C1E50020C389 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		43F7AF991F73C2900020C389 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		43F7AF9B1F73E1F30020C389 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		43F7AF9D1F7401330020C389 /* SampleGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGeneration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,28 @@
 		43F7AF7E1F73C0190020C389 /* NotesTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				43F7AF7F1F73C0190020C389 /* AppDelegate.swift */,
-				43F7AF811F73C0190020C389 /* ViewController.swift */,
 				43F7AF831F73C0190020C389 /* Main.storyboard */,
+				43F7AF951F73C1A80020C389 /* MainTableViewController.swift */,
+				43F7AF971F73C1E50020C389 /* MainTableViewCell.swift */,
+				43D477E41F743ECF0064172B /* NoteViewController.swift */,
+				43F7AF991F73C2900020C389 /* Extensions.swift */,
+				43F7AF9B1F73E1F30020C389 /* Note.swift */,
+				43F7AF9D1F7401330020C389 /* SampleGeneration.swift */,
+				43F7AF941F73C1640020C389 /* Supported Files */,
+			);
+			path = NotesTestTask;
+			sourceTree = "<group>";
+		};
+		43F7AF941F73C1640020C389 /* Supported Files */ = {
+			isa = PBXGroup;
+			children = (
+				43F7AF7F1F73C0190020C389 /* AppDelegate.swift */,
 				43F7AF891F73C0190020C389 /* Assets.xcassets */,
 				43F7AF8B1F73C0190020C389 /* LaunchScreen.storyboard */,
 				43F7AF8E1F73C0190020C389 /* Info.plist */,
 				43F7AF861F73C0190020C389 /* NotesTestTask.xcdatamodeld */,
 			);
-			path = NotesTestTask;
+			name = "Supported Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +163,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43F7AF821F73C0190020C389 /* ViewController.swift in Sources */,
+				43D477E51F743ECF0064172B /* NoteViewController.swift in Sources */,
+				43F7AF9A1F73C2900020C389 /* Extensions.swift in Sources */,
 				43F7AF801F73C0190020C389 /* AppDelegate.swift in Sources */,
+				43F7AF961F73C1A80020C389 /* MainTableViewController.swift in Sources */,
+				43F7AF981F73C1E50020C389 /* MainTableViewCell.swift in Sources */,
+				43F7AF9E1F7401330020C389 /* SampleGeneration.swift in Sources */,
 				43F7AF881F73C0190020C389 /* NotesTestTask.xcdatamodeld in Sources */,
+				43F7AF9C1F73E1F30020C389 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +336,7 @@
 				43F7AF931F73C0190020C389 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
