@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NoteViewController: UIViewController {
+class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     // var note: Note?
     var uuid: String?
@@ -19,7 +19,6 @@ class NoteViewController: UIViewController {
     // Boolean to keep track if note changed.
     var hasChanged: Bool = false
     
-    
     @IBOutlet weak var titleLabel: UITextField!
     
     @IBOutlet weak var contentsTextView: UITextView!
@@ -27,10 +26,16 @@ class NoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
+        navigationItem.rightBarButtonItem = deleteButton
+        
         contentsTextView.keyboardDismissMode = .interactive
         
         setupUI()
         setupContent()
+        
+        titleLabel.delegate = self
+        contentsTextView.delegate = self
         
     }
 
@@ -62,14 +67,25 @@ class NoteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // TODO: Save changes to an existing note here or create a new one.
-        currentNote?.title = titleLabel.text
-        currentNote?.contents = contentsTextView.text
         
-        // TODO: Check if note has changes. then update date modified.
-        currentNote?.dateModified = NSDate()
-        
-        saveContext()
+        if hasChanged {
+            if let currentNote = currentNote {
+                currentNote.title = titleLabel.text
+                currentNote.contents = contentsTextView.text
+                
+                currentNote.dateModified = NSDate()
+                
+                saveContext()
+            } else {
+                let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
+                note.title = titleLabel.text
+                note.contents = contentsTextView.text
+                
+                note.dateModified = NSDate()
+                note.key = UUID().uuidString
+                saveContext()
+            }
+        }
     }
     
     func saveContext() {
@@ -78,6 +94,18 @@ class NoteViewController: UIViewController {
         } catch {
             print(error)
         }
+    }
+    
+    // MARK: - UITextViewDelegate methods
+    func textViewDidChange(_ textView: UITextView) {
+        hasChanged = true
+    }
+    
+    
+    // MARK: - UITextFieldDelegate methods
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        hasChanged = true
+        return true
     }
     
     /*
@@ -91,3 +119,5 @@ class NoteViewController: UIViewController {
     */
 
 }
+
+
