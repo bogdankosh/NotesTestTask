@@ -26,8 +26,6 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
-        navigationItem.rightBarButtonItem = deleteButton
         
         contentsTextView.keyboardDismissMode = .interactive
         
@@ -37,6 +35,15 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         titleLabel.delegate = self
         contentsTextView.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if currentNote != nil {
+            let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteCurrentNote))
+            navigationItem.rightBarButtonItem = deleteButton
+        }
     }
 
     func setupUI() {
@@ -86,6 +93,25 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
                 saveContext()
             }
         }
+    }
+    
+    func deleteCurrentNote() {
+        
+        // TODO: Encapsulate alert into extension
+        let yesButton = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            if let note = self.currentNote {
+                self.context.delete(note)
+                self.hasChanged = false
+                self.saveContext()
+                self.navigationController?.popViewController(animated: true)
+            }
+
+        }
+        let noButton = UIAlertAction(title: "Cancel", style: .cancel)
+        let alert = UIAlertController(title: "Delete note", message: "Do you really want to delete a note?", preferredStyle: .alert)
+        alert.addAction(yesButton)
+        alert.addAction(noButton)
+        present(alert, animated: true, completion: nil)
     }
     
     func saveContext() {

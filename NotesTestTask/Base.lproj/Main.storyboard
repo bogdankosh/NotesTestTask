@@ -14,16 +14,16 @@
         <scene sceneID="Da7-KE-tQG">
             <objects>
                 <tableViewController id="zMy-Xh-a97" customClass="MainTableViewController" customModule="NotesTestTask" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="xhs-EF-Mv3">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="xhs-EF-Mv3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTableViewCell" rowHeight="80" id="Rzt-h6-dND" customClass="MainTableViewCell" customModule="NotesTestTask" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTableViewCell" rowHeight="75" id="Rzt-h6-dND" customClass="MainTableViewCell" customModule="NotesTestTask" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rzt-h6-dND" id="yOZ-BX-xZL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77V-eQ-GKv">
@@ -33,16 +33,16 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="33q-rJ-0JK">
-                                            <rect key="frame" x="28" y="40" width="319" height="23.5"/>
+                                            <rect key="frame" x="28" y="40" width="319" height="22.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaY-sL-5bf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75.5" height="23.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="75.5" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.32640631370000001" green="0.32640631370000001" blue="0.32640631370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Text shmext" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iys-2C-uFg">
-                                                    <rect key="frame" x="85.5" y="0.0" width="233.5" height="23.5"/>
+                                                    <rect key="frame" x="85.5" y="0.0" width="233.5" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.53159575670000003" green="0.53159575670000003" blue="0.53159575670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="77V-eQ-GKv" firstAttribute="leading" secondItem="yOZ-BX-xZL" secondAttribute="leadingMargin" constant="20" id="1R2-j5-cvU"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="33q-rJ-0JK" secondAttribute="bottom" constant="8" id="P6z-XQ-Bee"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="33q-rJ-0JK" secondAttribute="bottom" constant="4" id="P6z-XQ-Bee"/>
                                         <constraint firstAttribute="topMargin" secondItem="77V-eQ-GKv" secondAttribute="top" id="bG9-S5-jEt"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="77V-eQ-GKv" secondAttribute="trailing" constant="20" id="cHV-0n-9xw"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="33q-rJ-0JK" secondAttribute="trailing" constant="20" id="eh1-Cy-Wdn"/>

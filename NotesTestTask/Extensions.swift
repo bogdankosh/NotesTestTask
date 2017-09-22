@@ -17,3 +17,14 @@ extension UITableViewCell {
         return UINib(nibName: identifier, bundle: nil)
     }
 }
+
+extension UIViewController {
+    func presentAlert() {
+        let yesButton = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
+        let noButton = UIAlertAction(title: "Cancel", style: .cancel)
+        let alert = UIAlertController(title: "Delete note", message: "Do you really want to delete a note?", preferredStyle: .alert)
+        alert.addAction(yesButton)
+        alert.addAction(noButton)
+        present(alert, animated: true, completion: nil)
+    }
+}

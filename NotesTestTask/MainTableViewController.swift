@@ -84,9 +84,9 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier, for: indexPath) as? MainTableViewCell else { fatalError("Could not dequeue a cell as MainTableViewCell") }
         
-        cell.titleLabel.text =      notesStore[indexPath.row].title
+        cell.titleLabel.text =      ((notesStore[indexPath.row].title)!.isEmpty) ? "(No title)" : notesStore[indexPath.row].title
         cell.contentsLabel.text =   notesStore[indexPath.row].contents
-        cell.dateLabel.text =       notesStore[indexPath.row].dateModified?.description
+        cell.dateLabel.text =       DateHelper.dayModified(notesStore[indexPath.row].dateModified! as Date)
         
         return cell
     }

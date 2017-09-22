@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430C072D1F75B3910007E7FD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430C072C1F75B3910007E7FD /* DateExtensions.swift */; };
+		430C072F1F75B9EE0007E7FD /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430C072E1F75B9EE0007E7FD /* DateHelper.swift */; };
 		43D477E51F743ECF0064172B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D477E41F743ECF0064172B /* NoteViewController.swift */; };
 		43F7AF801F73C0190020C389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF7F1F73C0190020C389 /* AppDelegate.swift */; };
 		43F7AF851F73C0190020C389 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F7AF831F73C0190020C389 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		430C072C1F75B3910007E7FD /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		430C072E1F75B9EE0007E7FD /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = ../DateHelper.swift; sourceTree = "<group>"; };
 		43D477E41F743ECF0064172B /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		43F7AF7C1F73C0190020C389 /* NotesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F7AF7F1F73C0190020C389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430C07311F75BC130007E7FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				43F7AF951F73C1A80020C389 /* MainTableViewController.swift */,
+				43D477E41F743ECF0064172B /* NoteViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		430C07321F75BC1B0007E7FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43F7AF971F73C1E50020C389 /* MainTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		430C07331F75BC2B0007E7FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				430C072E1F75B9EE0007E7FD /* DateHelper.swift */,
+				43F7AF991F73C2900020C389 /* Extensions.swift */,
+				43F7AF9B1F73E1F30020C389 /* Note.swift */,
+				43F7AF9D1F7401330020C389 /* SampleGeneration.swift */,
+				430C072C1F75B3910007E7FD /* DateExtensions.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		430C07341F75BC480007E7FD /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				43F7AF831F73C0190020C389 /* Main.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
 		43F7AF731F73C0180020C389 = {
 			isa = PBXGroup;
 			children = (
@@ -66,13 +107,10 @@
 		43F7AF7E1F73C0190020C389 /* NotesTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				43F7AF831F73C0190020C389 /* Main.storyboard */,
-				43F7AF951F73C1A80020C389 /* MainTableViewController.swift */,
-				43F7AF971F73C1E50020C389 /* MainTableViewCell.swift */,
-				43D477E41F743ECF0064172B /* NoteViewController.swift */,
-				43F7AF991F73C2900020C389 /* Extensions.swift */,
-				43F7AF9B1F73E1F30020C389 /* Note.swift */,
-				43F7AF9D1F7401330020C389 /* SampleGeneration.swift */,
+				430C07341F75BC480007E7FD /* Storyboard */,
+				430C07311F75BC130007E7FD /* Controller */,
+				430C07321F75BC1B0007E7FD /* View */,
+				430C07331F75BC2B0007E7FD /* Model */,
 				43F7AF941F73C1640020C389 /* Supported Files */,
 			);
 			path = NotesTestTask;
@@ -168,6 +206,8 @@
 				43F7AF801F73C0190020C389 /* AppDelegate.swift in Sources */,
 				43F7AF961F73C1A80020C389 /* MainTableViewController.swift in Sources */,
 				43F7AF981F73C1E50020C389 /* MainTableViewCell.swift in Sources */,
+				430C072F1F75B9EE0007E7FD /* DateHelper.swift in Sources */,
+				430C072D1F75B3910007E7FD /* DateExtensions.swift in Sources */,
 				43F7AF9E1F7401330020C389 /* SampleGeneration.swift in Sources */,
 				43F7AF881F73C0190020C389 /* NotesTestTask.xcdatamodeld in Sources */,
 				43F7AF9C1F73E1F30020C389 /* Note.swift in Sources */,
