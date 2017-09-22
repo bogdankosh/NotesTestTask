@@ -74,7 +74,13 @@
                             <outlet property="delegate" destination="zMy-Xh-a97" id="0Es-Sb-6eJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="b1t-tx-U2J"/>
+                    <navigationItem key="navigationItem" id="b1t-tx-U2J">
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="9b5-PD-zrs">
+                            <connections>
+                                <segue destination="MQo-oW-aYl" kind="show" identifier="newNote" id="man-7e-2tB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7Y-ju-yCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,6 +143,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="oGe-um-COU">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="zMy-Xh-a97" kind="relationship" relationship="rootViewController" id="sjt-Lg-GN7"/>
                     </connections>
@@ -146,4 +156,7 @@
             <point key="canvasLocation" x="448.80000000000001" y="261.31934032983509"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="man-7e-2tB"/>
+    </inferredMetricsTieBreakers>
 </document>

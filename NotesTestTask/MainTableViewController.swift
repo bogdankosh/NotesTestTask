@@ -11,7 +11,8 @@ import CoreData
 
 class MainTableViewController: UITableViewController {
     
-    let segueShowNote = "showNote"
+    let segueShowNote =     "showNote"
+    let segueNewNote =      "newNote"
     
     var notesStore: [Note] = []
 
@@ -19,7 +20,7 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupUI()
-        addSampleData()
+//        addSampleData()
         initializeDataFromCoreData()
     }
     
@@ -31,7 +32,9 @@ class MainTableViewController: UITableViewController {
     
     func setupUI() {
         title = "Notes"
+        
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
     
     func initializeData() {
@@ -45,6 +48,7 @@ class MainTableViewController: UITableViewController {
     func initializeDataFromCoreData() {
         do {
             notesStore = try context.fetch(Note.fetchRequest())
+            tableView.reloadData()
         } catch {
             print(error)
         }
@@ -117,6 +121,11 @@ class MainTableViewController: UITableViewController {
             // destinationViewController?.note = notesStore[tableView.indexPathForSelectedRow!.row]
             destinationViewController?.uuid = notesStore[tableView.indexPathForSelectedRow!.row].key
             
+            destinationViewController?.context = context
+        }
+        
+        if segue.identifier == segueNewNote {
+            let destinationViewController = segue.destination as? NoteViewController
             destinationViewController?.context = context
         }
     }

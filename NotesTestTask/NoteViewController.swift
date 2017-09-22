@@ -12,8 +12,13 @@ import CoreData
 class NoteViewController: UIViewController {
     
     // var note: Note?
-    var uuid: String!
+    var uuid: String?
     var context: NSManagedObjectContext!
+    var currentNote: Note?
+    
+    // Boolean to keep track if note changed.
+    var hasChanged: Bool = false
+    
     
     @IBOutlet weak var titleLabel: UITextField!
     
@@ -30,26 +35,49 @@ class NoteViewController: UIViewController {
     }
 
     func setupUI() {
+        // Sets up a text inset for a text view.
         contentsTextView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
-    
-    func setupContent() {
-        let request = NSFetchRequest<Note>(entityName: "Note")
-        request.predicate = NSPredicate(format: "key == %@", uuid)
-        
-        do {
-            let notes = try context.fetch(request)
-            let note = notes.first
+
+    func setupContent()
+    {
+        // Check if we pass the reference to an existing note or creating a new one
+        if let uuid = uuid {
+            let request = NSFetchRequest<Note>(entityName: "Note")
+            request.predicate = NSPredicate(format: "key == %@", uuid)
             
-            titleLabel.text = note?.title
-            contentsTextView.text = note?.contents
-        } catch {
-            print(error)
+            do {
+                let notes = try context.fetch(request)
+                currentNote = notes.first
+                
+                titleLabel.text = currentNote?.title
+                contentsTextView.text = currentNote?.contents
+            } catch {
+                print(error)
+            }
+        } else {
+            // TODO: Create a path where we create a new note.
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        // TODO: Save a note here.
+        super.viewWillDisappear(animated)
+        // TODO: Save changes to an existing note here or create a new one.
+        currentNote?.title = titleLabel.text
+        currentNote?.contents = contentsTextView.text
+        
+        // TODO: Check if note has changes. then update date modified.
+        currentNote?.dateModified = NSDate()
+        
+        saveContext()
+    }
+    
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
     
     /*
