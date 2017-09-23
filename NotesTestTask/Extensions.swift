@@ -19,10 +19,10 @@ extension UITableViewCell {
 }
 
 extension UIViewController {
-    func presentAlert() {
-        let yesButton = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
+    func presentAlert(title: String, message: String, yesHandler: @escaping (UIAlertAction) -> Void) {
+        let yesButton = UIAlertAction(title: "Delete", style: .destructive, handler: yesHandler)
         let noButton = UIAlertAction(title: "Cancel", style: .cancel)
-        let alert = UIAlertController(title: "Delete note", message: "Do you really want to delete a note?", preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(yesButton)
         alert.addAction(noButton)
         present(alert, animated: true, completion: nil)

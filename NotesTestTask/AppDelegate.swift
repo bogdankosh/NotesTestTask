@@ -73,5 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// Global context variable
 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 

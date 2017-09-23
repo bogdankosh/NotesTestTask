@@ -20,7 +20,7 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupUI()
-//        addSampleData()
+        addSampleData()
         initializeDataFromCoreData()
     }
     
@@ -33,7 +33,8 @@ class MainTableViewController: UITableViewController {
     func setupUI() {
         title = "Notes"
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // TODO: Deleting notes from table view.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
     }
     
@@ -41,8 +42,6 @@ class MainTableViewController: UITableViewController {
         notesStore = SampleGeneration.generate()
         
         sortStore()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
     }
     
     func initializeDataFromCoreData() {
@@ -54,19 +53,37 @@ class MainTableViewController: UITableViewController {
         }
         
         sortStore()
-        
     }
     
     func addSampleData() {
         
-        for index in 0 ..< 10 {
-            let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
-            note.title = "Note #\(index)"
-            note.contents = "Hey bitch"
-            note.key = UUID().uuidString
-            note.dateModified = NSDate()
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "notFirstLaunch") {
+            
+        } else {
+            for index in 0 ..< 3 {
+                
+                let titles = ["Shopping list", "Random thoughts", "Movies to watch"]
+                let contents = ["Buy milk, cereal, 2 lightbulbs, chocolates!", "Be or not to be, that's the real question!", "Dark Knight, La La Land (or maybe not), Dunkirk, Dark Knight Rises."]
+                
+                let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
+                note.title = titles[index]
+                note.contents = contents[index]
+                note.key = UUID().uuidString
+                note.dateModified = DateHelper.dateFromTodayByAdding(day: -(index)) as NSDate
+            }
+            
+            defaults.set(true, forKey: "notFirstLaunch")
+            saveContext()
         }
-        
+    }
+    
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
     
     func sortStore() {
@@ -91,28 +108,6 @@ class MainTableViewController: UITableViewController {
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-    
-    
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,5 +124,4 @@ class MainTableViewController: UITableViewController {
             destinationViewController?.context = context
         }
     }
-
 }

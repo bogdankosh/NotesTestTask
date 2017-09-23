@@ -16,4 +16,11 @@ struct DateHelper {
         if date.isInThisWeek { return date.dayName(ofStyle: .full) }
         return date.dateString()
     }
+    
+    static func dateFromTodayByAdding(day: Int) -> Date {
+        let date = Date()
+        var dayComponent = DateComponents()
+        dayComponent.day = day
+        return date.calendar.date(byAdding: dayComponent, to: date)!
+    }
 }

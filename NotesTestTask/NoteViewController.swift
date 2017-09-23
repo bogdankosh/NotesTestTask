@@ -11,12 +11,11 @@ import CoreData
 
 class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
-    // var note: Note?
-    var uuid: String?
     var context: NSManagedObjectContext!
+    var uuid: String?
     var currentNote: Note?
     
-    // Boolean to keep track if note changed.
+    // Boolean to keep track if note changed and if so - save the note.
     var hasChanged: Bool = false
     
     @IBOutlet weak var titleLabel: UITextField!
@@ -26,7 +25,7 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // Dismiss the keyboard by sliding finger down
         contentsTextView.keyboardDismissMode = .interactive
         
         setupUI()
@@ -67,8 +66,6 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
             } catch {
                 print(error)
             }
-        } else {
-            // TODO: Create a path where we create a new note.
         }
     }
     
@@ -96,22 +93,16 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     }
     
     func deleteCurrentNote() {
-        
-        // TODO: Encapsulate alert into extension
-        let yesButton = UIAlertAction(title: "Delete", style: .destructive) { _ in
+        let handler: (UIAlertAction) -> Void = { _ in
             if let note = self.currentNote {
                 self.context.delete(note)
                 self.hasChanged = false
                 self.saveContext()
                 self.navigationController?.popViewController(animated: true)
             }
-
         }
-        let noButton = UIAlertAction(title: "Cancel", style: .cancel)
-        let alert = UIAlertController(title: "Delete note", message: "Do you really want to delete a note?", preferredStyle: .alert)
-        alert.addAction(yesButton)
-        alert.addAction(noButton)
-        present(alert, animated: true, completion: nil)
+        
+        presentAlert(title: "Delete note", message: "Do you really want to delete the note?", yesHandler: handler)
     }
     
     func saveContext() {
@@ -133,16 +124,6 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         hasChanged = true
         return true
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
