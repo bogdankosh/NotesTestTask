@@ -38,12 +38,6 @@ class MainTableViewController: UITableViewController {
         
     }
     
-    func initializeData() {
-        notesStore = SampleGeneration.generate()
-        
-        sortStore()
-    }
-    
     func initializeDataFromCoreData() {
         do {
             notesStore = try context.fetch(Note.fetchRequest())
@@ -111,17 +105,21 @@ class MainTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueShowNote {
+        
+        switch segue.identifier! {
+        case segueShowNote:
+        
             let destinationViewController = segue.destination as? NoteViewController
             // destinationViewController?.note = notesStore[tableView.indexPathForSelectedRow!.row]
             destinationViewController?.uuid = notesStore[tableView.indexPathForSelectedRow!.row].key
             
             destinationViewController?.context = context
-        }
-        
-        if segue.identifier == segueNewNote {
+            
+        case segueNewNote:
             let destinationViewController = segue.destination as? NoteViewController
             destinationViewController?.context = context
+        default:
+            fatalError("Called non-existent segue")
         }
     }
 }

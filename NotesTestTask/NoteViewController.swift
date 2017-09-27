@@ -50,8 +50,7 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         contentsTextView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 
-    func setupContent()
-    {
+    func setupContent() {
         // Check if we pass the reference to an existing note or creating a new one
         if let uuid = uuid {
             let request = NSFetchRequest<Note>(entityName: "Note")
