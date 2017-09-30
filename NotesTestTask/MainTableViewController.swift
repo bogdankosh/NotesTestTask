@@ -107,17 +107,16 @@ class MainTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier! {
-        case segueShowNote:
-        
-            let destinationViewController = segue.destination as? NoteViewController
-            // destinationViewController?.note = notesStore[tableView.indexPathForSelectedRow!.row]
-            destinationViewController?.uuid = notesStore[tableView.indexPathForSelectedRow!.row].key
             
+        case segueShowNote:
+            let destinationViewController = segue.destination as? NoteViewController
+            destinationViewController?.uuid = notesStore[tableView.indexPathForSelectedRow!.row].key
             destinationViewController?.context = context
             
         case segueNewNote:
             let destinationViewController = segue.destination as? NoteViewController
             destinationViewController?.context = context
+            
         default:
             fatalError("Called non-existent segue")
         }

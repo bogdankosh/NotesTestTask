@@ -18,7 +18,6 @@
 		43F7AF961F73C1A80020C389 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF951F73C1A80020C389 /* MainTableViewController.swift */; };
 		43F7AF981F73C1E50020C389 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF971F73C1E50020C389 /* MainTableViewCell.swift */; };
 		43F7AF9A1F73C2900020C389 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF991F73C2900020C389 /* Extensions.swift */; };
-		43F7AF9C1F73E1F30020C389 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF9B1F73E1F30020C389 /* Note.swift */; };
 		43F7AF9E1F7401330020C389 /* SampleGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF9D1F7401330020C389 /* SampleGeneration.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 		43F7AF951F73C1A80020C389 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		43F7AF971F73C1E50020C389 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		43F7AF991F73C2900020C389 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		43F7AF9B1F73E1F30020C389 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		43F7AF9D1F7401330020C389 /* SampleGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleGeneration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,7 +71,6 @@
 			children = (
 				430C072E1F75B9EE0007E7FD /* DateHelper.swift */,
 				43F7AF991F73C2900020C389 /* Extensions.swift */,
-				43F7AF9B1F73E1F30020C389 /* Note.swift */,
 				43F7AF9D1F7401330020C389 /* SampleGeneration.swift */,
 				430C072C1F75B3910007E7FD /* DateExtensions.swift */,
 			);
@@ -210,7 +207,6 @@
 				430C072D1F75B3910007E7FD /* DateExtensions.swift in Sources */,
 				43F7AF9E1F7401330020C389 /* SampleGeneration.swift in Sources */,
 				43F7AF881F73C0190020C389 /* NotesTestTask.xcdatamodeld in Sources */,
-				43F7AF9C1F73E1F30020C389 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -68,6 +68,7 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         }
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -89,6 +90,7 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
                 saveContext()
             }
         }
+        hasChanged = false
     }
     
     func deleteCurrentNote() {
@@ -108,7 +110,7 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         do {
             try context.save()
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
     
