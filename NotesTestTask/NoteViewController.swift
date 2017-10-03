@@ -63,7 +63,7 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
                 titleLabel.text = currentNote?.title
                 contentsTextView.text = currentNote?.contents
             } catch {
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }
@@ -72,14 +72,14 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        // FIX: -
+        
         if hasChanged {
             if let currentNote = currentNote {
                 currentNote.title = titleLabel.text
                 currentNote.contents = contentsTextView.text
                 
                 currentNote.dateModified = NSDate()
-                
-                saveContext()
             } else {
                 let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
                 note.title = titleLabel.text
@@ -87,8 +87,8 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
                 
                 note.dateModified = NSDate()
                 note.key = UUID().uuidString
-                saveContext()
             }
+            saveContext()
         }
         hasChanged = false
     }

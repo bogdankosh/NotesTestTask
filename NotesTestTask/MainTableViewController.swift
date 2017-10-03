@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 import CoreData
 
 class MainTableViewController: UITableViewController {
@@ -22,6 +23,7 @@ class MainTableViewController: UITableViewController {
         setupUI()
         addSampleData()
         initializeDataFromCoreData()
+        transferDataToWatch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +80,18 @@ class MainTableViewController: UITableViewController {
         } catch {
             print(error)
         }
+        
+    }
+    
+    func transferDataToWatch() {
+        var array = [String?]()
+        for item in notesStore {
+            array.append(item.title)
+        }
+        var dict = [String: Any]()
+        dict = ["notes": array]
+        let session = WCSession.default()
+        try! session.updateApplicationContext(dict)
     }
     
     func sortStore() {

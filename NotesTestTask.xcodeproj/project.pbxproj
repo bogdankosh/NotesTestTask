@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		430C072D1F75B3910007E7FD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430C072C1F75B3910007E7FD /* DateExtensions.swift */; };
 		430C072F1F75B9EE0007E7FD /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430C072E1F75B9EE0007E7FD /* DateHelper.swift */; };
+		432184E31F80040F00E84D21 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432184E11F80040F00E84D21 /* Interface.storyboard */; };
+		432184E51F80040F00E84D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432184E41F80040F00E84D21 /* Assets.xcassets */; };
+		432184EC1F80040F00E84D21 /* Notes Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 432184EB1F80040F00E84D21 /* Notes Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		432184F31F80040F00E84D21 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432184F21F80040F00E84D21 /* InterfaceController.swift */; };
+		432184F51F80040F00E84D21 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432184F41F80040F00E84D21 /* ExtensionDelegate.swift */; };
+		432184F71F80040F00E84D21 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432184F61F80040F00E84D21 /* NotificationController.swift */; };
+		432184F91F80040F00E84D21 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432184F81F80040F00E84D21 /* ComplicationController.swift */; };
+		432184FB1F80040F00E84D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432184FA1F80040F00E84D21 /* Assets.xcassets */; };
+		432184FF1F80040F00E84D21 /* Notes.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 432184DF1F80040F00E84D21 /* Notes.app */; };
 		43D477E51F743ECF0064172B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D477E41F743ECF0064172B /* NoteViewController.swift */; };
 		43F7AF801F73C0190020C389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF7F1F73C0190020C389 /* AppDelegate.swift */; };
 		43F7AF851F73C0190020C389 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F7AF831F73C0190020C389 /* Main.storyboard */; };
@@ -21,9 +30,63 @@
 		43F7AF9E1F7401330020C389 /* SampleGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF9D1F7401330020C389 /* SampleGeneration.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		432184ED1F80040F00E84D21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43F7AF741F73C0180020C389 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 432184EA1F80040F00E84D21;
+			remoteInfo = "Notes Extension";
+		};
+		432184FD1F80040F00E84D21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43F7AF741F73C0180020C389 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 432184DE1F80040F00E84D21;
+			remoteInfo = Notes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		432185051F80040F00E84D21 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				432184EC1F80040F00E84D21 /* Notes Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432185071F80040F00E84D21 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				432184FF1F80040F00E84D21 /* Notes.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		430C072C1F75B3910007E7FD /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		430C072E1F75B9EE0007E7FD /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = ../DateHelper.swift; sourceTree = "<group>"; };
+		432184DF1F80040F00E84D21 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		432184E21F80040F00E84D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		432184E41F80040F00E84D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		432184E61F80040F00E84D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		432184EB1F80040F00E84D21 /* Notes Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Notes Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		432184F11F80040F00E84D21 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		432184F21F80040F00E84D21 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		432184F41F80040F00E84D21 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		432184F61F80040F00E84D21 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		432184F81F80040F00E84D21 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		432184FA1F80040F00E84D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		432184FC1F80040F00E84D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43D477E41F743ECF0064172B /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		43F7AF7C1F73C0190020C389 /* NotesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F7AF7F1F73C0190020C389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +102,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		432184E81F80040F00E84D21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43F7AF791F73C0190020C389 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,10 +155,44 @@
 			name = Storyboard;
 			sourceTree = "<group>";
 		};
+		432184E01F80040F00E84D21 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				432184E11F80040F00E84D21 /* Interface.storyboard */,
+				432184E41F80040F00E84D21 /* Assets.xcassets */,
+				432184E61F80040F00E84D21 /* Info.plist */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		432184EF1F80040F00E84D21 /* Notes Extension */ = {
+			isa = PBXGroup;
+			children = (
+				432184F21F80040F00E84D21 /* InterfaceController.swift */,
+				432184F41F80040F00E84D21 /* ExtensionDelegate.swift */,
+				432184F61F80040F00E84D21 /* NotificationController.swift */,
+				432184F81F80040F00E84D21 /* ComplicationController.swift */,
+				432184FA1F80040F00E84D21 /* Assets.xcassets */,
+				432184FC1F80040F00E84D21 /* Info.plist */,
+				432184F01F80040F00E84D21 /* Supporting Files */,
+			);
+			path = "Notes Extension";
+			sourceTree = "<group>";
+		};
+		432184F01F80040F00E84D21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				432184F11F80040F00E84D21 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		43F7AF731F73C0180020C389 = {
 			isa = PBXGroup;
 			children = (
 				43F7AF7E1F73C0190020C389 /* NotesTestTask */,
+				432184E01F80040F00E84D21 /* Notes */,
+				432184EF1F80040F00E84D21 /* Notes Extension */,
 				43F7AF7D1F73C0190020C389 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				43F7AF7C1F73C0190020C389 /* NotesTestTask.app */,
+				432184DF1F80040F00E84D21 /* Notes.app */,
+				432184EB1F80040F00E84D21 /* Notes Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +234,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		432184DE1F80040F00E84D21 /* Notes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 432185061F80040F00E84D21 /* Build configuration list for PBXNativeTarget "Notes" */;
+			buildPhases = (
+				432184DD1F80040F00E84D21 /* Resources */,
+				432185051F80040F00E84D21 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				432184EE1F80040F00E84D21 /* PBXTargetDependency */,
+			);
+			name = Notes;
+			productName = Notes;
+			productReference = 432184DF1F80040F00E84D21 /* Notes.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		432184EA1F80040F00E84D21 /* Notes Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 432185041F80040F00E84D21 /* Build configuration list for PBXNativeTarget "Notes Extension" */;
+			buildPhases = (
+				432184E71F80040F00E84D21 /* Sources */,
+				432184E81F80040F00E84D21 /* Frameworks */,
+				432184E91F80040F00E84D21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Notes Extension";
+			productName = "Notes Extension";
+			productReference = 432184EB1F80040F00E84D21 /* Notes Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		43F7AF7B1F73C0190020C389 /* NotesTestTask */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43F7AF911F73C0190020C389 /* Build configuration list for PBXNativeTarget "NotesTestTask" */;
@@ -135,10 +275,12 @@
 				43F7AF781F73C0190020C389 /* Sources */,
 				43F7AF791F73C0190020C389 /* Frameworks */,
 				43F7AF7A1F73C0190020C389 /* Resources */,
+				432185071F80040F00E84D21 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				432184FE1F80040F00E84D21 /* PBXTargetDependency */,
 			);
 			name = NotesTestTask;
 			productName = NotesTestTask;
@@ -155,6 +297,16 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Bohdan Koshyrets";
 				TargetAttributes = {
+					432184DE1F80040F00E84D21 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = VCN7LM785T;
+						ProvisioningStyle = Automatic;
+					};
+					432184EA1F80040F00E84D21 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = VCN7LM785T;
+						ProvisioningStyle = Automatic;
+					};
 					43F7AF7B1F73C0190020C389 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = VCN7LM785T;
@@ -176,11 +328,30 @@
 			projectRoot = "";
 			targets = (
 				43F7AF7B1F73C0190020C389 /* NotesTestTask */,
+				432184DE1F80040F00E84D21 /* Notes */,
+				432184EA1F80040F00E84D21 /* Notes Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		432184DD1F80040F00E84D21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432184E51F80040F00E84D21 /* Assets.xcassets in Resources */,
+				432184E31F80040F00E84D21 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432184E91F80040F00E84D21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432184FB1F80040F00E84D21 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43F7AF7A1F73C0190020C389 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +365,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		432184E71F80040F00E84D21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432184F71F80040F00E84D21 /* NotificationController.swift in Sources */,
+				432184F91F80040F00E84D21 /* ComplicationController.swift in Sources */,
+				432184F51F80040F00E84D21 /* ExtensionDelegate.swift in Sources */,
+				432184F31F80040F00E84D21 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		43F7AF781F73C0190020C389 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -212,7 +394,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		432184EE1F80040F00E84D21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 432184EA1F80040F00E84D21 /* Notes Extension */;
+			targetProxy = 432184ED1F80040F00E84D21 /* PBXContainerItemProxy */;
+		};
+		432184FE1F80040F00E84D21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 432184DE1F80040F00E84D21 /* Notes */;
+			targetProxy = 432184FD1F80040F00E84D21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		432184E11F80040F00E84D21 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				432184E21F80040F00E84D21 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		43F7AF831F73C0190020C389 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -232,6 +435,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		432185001F80040F00E84D21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				IBSC_MODULE = Notes_Extension;
+				INFOPLIST_FILE = Notes/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.NotesTestTask.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		432185011F80040F00E84D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				IBSC_MODULE = Notes_Extension;
+				INFOPLIST_FILE = Notes/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.NotesTestTask.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		432185021F80040F00E84D21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				INFOPLIST_FILE = "Notes Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.NotesTestTask.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		432185031F80040F00E84D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = VCN7LM785T;
+				INFOPLIST_FILE = "Notes Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bogdankosh.NotesTestTask.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
 		43F7AF8F1F73C0190020C389 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -356,6 +629,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		432185041F80040F00E84D21 /* Build configuration list for PBXNativeTarget "Notes Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				432185021F80040F00E84D21 /* Debug */,
+				432185031F80040F00E84D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		432185061F80040F00E84D21 /* Build configuration list for PBXNativeTarget "Notes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				432185001F80040F00E84D21 /* Debug */,
+				432185011F80040F00E84D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		43F7AF771F73C0180020C389 /* Build configuration list for PBXProject "NotesTestTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
