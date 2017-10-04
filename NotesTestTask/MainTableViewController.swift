@@ -91,7 +91,12 @@ class MainTableViewController: UITableViewController {
         var dict = [String: Any]()
         dict = ["notes": array]
         let session = WCSession.default()
-        try! session.updateApplicationContext(dict)
+        
+        do {
+            try session.updateApplicationContext(dict)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func sortStore() {
