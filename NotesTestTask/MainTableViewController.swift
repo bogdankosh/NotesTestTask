@@ -12,10 +12,13 @@ import CoreData
 
 class MainTableViewController: UITableViewController {
     
-    let segueShowNote =     "showNote"
-    let segueNewNote =      "newNote"
+    let kSegueShowNote =     "showNote"
+    let kSegueNewNote =      "newNote"
+    
+    let kNotFirstLaunchKey = "notFirstLaunch"
     
     var notesStore: [Note] = []
+    let noteStoreHelper = NoteStoreHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class MainTableViewController: UITableViewController {
         setupUI()
         addSampleData()
         initializeDataFromCoreData()
-        transferDataToWatch()
+        // transferDataToWatch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +35,7 @@ class MainTableViewController: UITableViewController {
         initializeDataFromCoreData()
     }
     
-    func setupUI() {
+    private func setupUI() {
         title = "Notes"
         
         // TODO: Deleting notes from table view.
@@ -48,13 +51,13 @@ class MainTableViewController: UITableViewController {
             print(error)
         }
         
-        sortStore()
+        notesStore = noteStoreHelper.sort(store: notesStore, by: .newestFirst)
     }
     
-    func addSampleData() {
+    private func addSampleData() {
         
         let defaults = UserDefaults.standard
-        if defaults.bool(forKey: "notFirstLaunch") {
+        if defaults.bool(forKey: kNotFirstLaunchKey) {
             
         } else {
             for index in 0 ..< 3 {
@@ -66,10 +69,10 @@ class MainTableViewController: UITableViewController {
                 note.title = titles[index]
                 note.contents = contents[index]
                 note.key = UUID().uuidString
-                note.dateModified = DateHelper.dateFromTodayByAdding(day: -(index)) as NSDate
+                note.dateModified = DateHelper.dateFromTodayByAdding(day: -index) as NSDate
             }
             
-            defaults.set(true, forKey: "notFirstLaunch")
+            defaults.set(true, forKey: kNotFirstLaunchKey)
             saveContext()
         }
     }
@@ -80,9 +83,9 @@ class MainTableViewController: UITableViewController {
         } catch {
             print(error)
         }
-        
     }
     
+    /*
     func transferDataToWatch() {
         var array = [String?]()
         for item in notesStore {
@@ -98,12 +101,9 @@ class MainTableViewController: UITableViewController {
             print(error.localizedDescription)
         }
     }
+    */
     
-    func sortStore() {
-        // Sort note elements by date modified (newest first)
-        notesStore = notesStore.sorted { $0.dateModified!.timeIntervalSinceReferenceDate > $1.dateModified!.timeIntervalSinceReferenceDate }
 
-    }
 
     // MARK: - Table view data source
 
@@ -114,10 +114,7 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier, for: indexPath) as? MainTableViewCell else { fatalError("Could not dequeue a cell as MainTableViewCell") }
         
-        cell.titleLabel.text =      ((notesStore[indexPath.row].title)!.isEmpty) ? "(No title)" : notesStore[indexPath.row].title
-        cell.contentsLabel.text =   notesStore[indexPath.row].contents
-        cell.dateLabel.text =       DateHelper.dayModified(notesStore[indexPath.row].dateModified! as Date)
-        
+        cell.configureCell(with: notesStore[indexPath.row])
         return cell
     }
 
@@ -126,18 +123,11 @@ class MainTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier! {
-            
-        case segueShowNote:
+        case kSegueShowNote:
             let destinationViewController = segue.destination as? NoteViewController
             destinationViewController?.uuid = notesStore[tableView.indexPathForSelectedRow!.row].key
-            destinationViewController?.context = context
-            
-        case segueNewNote:
-            let destinationViewController = segue.destination as? NoteViewController
-            destinationViewController?.context = context
-            
-        default:
-            fatalError("Called non-existent segue")
+        case kSegueNewNote: ()
+        default: fatalError("Called non-existent segue")
         }
     }
 }

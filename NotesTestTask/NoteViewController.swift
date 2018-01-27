@@ -9,9 +9,8 @@
 import UIKit
 import CoreData
 
-class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+class NoteViewController: UIViewController {
     
-    var context: NSManagedObjectContext!
     var uuid: String?
     var currentNote: Note?
     
@@ -19,7 +18,6 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     var hasChanged: Bool = false
     
     @IBOutlet weak var titleLabel: UITextField!
-    
     @IBOutlet weak var contentsTextView: UITextView!
 
     override func viewDidLoad() {
@@ -28,8 +26,8 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         // Dismiss the keyboard by sliding finger down
         contentsTextView.keyboardDismissMode = .interactive
         
-        setupUI()
-        setupContent()
+        self.setupUI()
+        self.setupContent()
         
         titleLabel.delegate = self
         contentsTextView.delegate = self
@@ -48,6 +46,10 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     func setupUI() {
         // Sets up a text inset for a text view.
         contentsTextView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        
+        titleLabel.accessibilityLabel = "Title text field"
+        contentsTextView.accessibilityLabel = "Note text view"
+        
     }
 
     func setupContent() {
@@ -96,7 +98,7 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     func deleteCurrentNote() {
         let handler: (UIAlertAction) -> Void = { _ in
             if let note = self.currentNote {
-                self.context.delete(note)
+                context.delete(note)
                 self.hasChanged = false
                 self.saveContext()
                 self.navigationController?.popViewController(animated: true)
@@ -113,19 +115,18 @@ class NoteViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
             print(error.localizedDescription)
         }
     }
-    
-    // MARK: - UITextViewDelegate methods
-    func textViewDidChange(_ textView: UITextView) {
-        hasChanged = true
-    }
-    
-    
-    // MARK: - UITextFieldDelegate methods
+}
+
+extension NoteViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         hasChanged = true
         return true
     }
-
 }
 
+extension NoteViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        hasChanged = true
+    }
+}
 

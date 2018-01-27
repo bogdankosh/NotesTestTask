@@ -10,10 +10,10 @@ import Foundation
 
 struct DateHelper {
     static func dayModified(_ date: Date) -> String {
-        if date.isInFuture { return "Unknown" }
-        if date.isInToday { return "Today" }
-        if date.isInYesterday { return "Yesterday" }
-        if date.isInThisWeek { return date.dayName(ofStyle: .full) }
+        if date.isInFuture      { return "Unknown" }
+        if date.isInToday       { return "Today" }
+        if date.isInYesterday   { return "Yesterday" }
+        if date.isInThisWeek    { return date.dayName(ofStyle: .full) }
         return date.dateString()
     }
     
