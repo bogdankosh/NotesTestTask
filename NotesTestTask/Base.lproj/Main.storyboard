@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,6 +50,14 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFi-38-gwN">
+                                            <rect key="frame" x="20" y="11" width="4" height="53"/>
+                                            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="53" id="NOk-0O-gf8"/>
+                                                <constraint firstAttribute="width" secondItem="xFi-38-gwN" secondAttribute="height" multiplier="4:53" id="oJf-4t-9Xo"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="77V-eQ-GKv" firstAttribute="leading" secondItem="yOZ-BX-xZL" secondAttribute="leadingMargin" constant="20" id="1R2-j5-cvU"/>
@@ -58,12 +67,16 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="33q-rJ-0JK" secondAttribute="trailing" constant="20" id="eh1-Cy-Wdn"/>
                                         <constraint firstItem="33q-rJ-0JK" firstAttribute="leading" secondItem="yOZ-BX-xZL" secondAttribute="leadingMargin" constant="20" id="eo6-4P-WTa"/>
                                         <constraint firstItem="33q-rJ-0JK" firstAttribute="top" secondItem="77V-eQ-GKv" secondAttribute="bottom" constant="8" id="hib-S9-19n"/>
+                                        <constraint firstItem="xFi-38-gwN" firstAttribute="leading" secondItem="yOZ-BX-xZL" secondAttribute="leading" constant="20" id="iCn-to-okz"/>
+                                        <constraint firstItem="xFi-38-gwN" firstAttribute="top" secondItem="yOZ-BX-xZL" secondAttribute="top" constant="11" id="l7g-kH-mTj"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.2108037243150685" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="contentsLabel" destination="Iys-2C-uFg" id="2E6-CQ-o92"/>
                                     <outlet property="dateLabel" destination="KaY-sL-5bf" id="Be1-X2-Jdw"/>
+                                    <outlet property="favoriteView" destination="xFi-38-gwN" id="Tz8-V9-NKm"/>
                                     <outlet property="titleLabel" destination="77V-eQ-GKv" id="FAT-kJ-eGf"/>
                                     <segue destination="MQo-oW-aYl" kind="show" identifier="showNote" id="Wb8-Xt-haE"/>
                                 </connections>
@@ -102,7 +115,7 @@
                                 <rect key="frame" x="24" y="72" width="327" height="39"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BYt-MJ-sBc">
                                 <rect key="frame" x="0.0" y="130" width="375" height="452"/>

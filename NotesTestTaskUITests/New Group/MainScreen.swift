@@ -18,7 +18,7 @@ class MainScreen: BaseScreen {
 //        visible()
     }
     
-    var tablesCount: UInt {
+    var cellsCount: UInt {
         return BaseScreen.app.tables.cells.count
     }
     

@@ -19,6 +19,8 @@ class NoteViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
+    
+    var favoriteButton = UIBarButtonItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,10 @@ class NoteViewController: UIViewController {
         self.setupUI()
         
         if currentNote != nil {
+            
+            favoriteButton = UIBarButtonItem(image: (currentNote?.isFavorited)! ? #imageLiteral(resourceName: "star-filled") : #imageLiteral(resourceName: "star"), style: .plain, target: self, action: #selector(favoriteCurrentNote))
             let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteCurrentNote))
-            navigationItem.rightBarButtonItem = deleteButton
+            navigationItem.rightBarButtonItems = [deleteButton, favoriteButton]
         }
     }
 
@@ -72,6 +76,7 @@ class NoteViewController: UIViewController {
                 
                 titleLabel.text = currentNote?.title
                 contentsTextView.text = currentNote?.contents
+                
             } catch {
                 print(error.localizedDescription)
             }
@@ -89,12 +94,14 @@ class NoteViewController: UIViewController {
                 currentNote.title = titleLabel.text
                 currentNote.contents = contentsTextView.text
                 
+                
                 currentNote.dateModified = NSDate()
             } else {
                 let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
                 note.title = titleLabel.text
                 note.contents = contentsTextView.text
                 
+                note.isFavorited = false
                 note.dateModified = NSDate()
                 note.key = UUID().uuidString
             }
@@ -103,7 +110,7 @@ class NoteViewController: UIViewController {
         hasChanged = false
     }
     
-    func deleteCurrentNote() {
+    @objc private func deleteCurrentNote() {
         let handler: (UIAlertAction) -> Void = { _ in
             if let note = self.currentNote {
                 context.delete(note)
@@ -114,6 +121,15 @@ class NoteViewController: UIViewController {
         }
         
         self.presentAlert(title: "Delete note", message: "Do you really want to delete the note? This action cannot be undone.", yesHandler: handler)
+    }
+    
+    @objc private func favoriteCurrentNote() {
+        self.hasChanged = true
+        if let note = currentNote {
+            note.isFavorited = !note.isFavorited
+            favoriteButton.image = note.isFavorited ? #imageLiteral(resourceName: "star-filled") : #imageLiteral(resourceName: "star")
+            
+        }
     }
     
     func saveContext() {

@@ -36,7 +36,6 @@ class MainTableViewController: UITableViewController {
         // transferDataToWatch()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -50,12 +49,10 @@ class MainTableViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationController?.navigationItem.largeTitleDisplayMode = .always
-
         }
         
         // TODO: Deleting notes from table view.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
     }
     
     func initializeDataFromCoreData() {

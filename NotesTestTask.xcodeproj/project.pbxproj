@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43068916201DCE5D00519405 /* CellAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43068915201DCE5D00519405 /* CellAppearance.swift */; };
 		430C072D1F75B3910007E7FD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430C072C1F75B3910007E7FD /* DateExtensions.swift */; };
 		430C072F1F75B9EE0007E7FD /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430C072E1F75B9EE0007E7FD /* DateHelper.swift */; };
 		432184E31F80040F00E84D21 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432184E11F80040F00E84D21 /* Interface.storyboard */; };
@@ -100,6 +101,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		43068915201DCE5D00519405 /* CellAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAppearance.swift; sourceTree = "<group>"; };
 		430C072C1F75B3910007E7FD /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		430C072E1F75B9EE0007E7FD /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = ../DateHelper.swift; sourceTree = "<group>"; };
 		432184DF1F80040F00E84D21 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 				43F7AF9D1F7401330020C389 /* SampleGeneration.swift */,
 				430C072C1F75B3910007E7FD /* DateExtensions.swift */,
 				432D695D201BA1550065BF9F /* NoteStoreHelper.swift */,
+				43068915201DCE5D00519405 /* CellAppearance.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43D477E51F743ECF0064172B /* NoteViewController.swift in Sources */,
+				43068916201DCE5D00519405 /* CellAppearance.swift in Sources */,
 				43F7AF9A1F73C2900020C389 /* Extensions.swift in Sources */,
 				43F7AF801F73C0190020C389 /* AppDelegate.swift in Sources */,
 				43F7AF961F73C1A80020C389 /* MainTableViewController.swift in Sources */,

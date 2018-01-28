@@ -15,48 +15,63 @@ class NotesTestTaskUITests: BaseTest {
     
     func testThatItShowCreatedNote() {
         
-        let sampleTitleText:    String = "Yazzzz " + Date().dateTimeString()
-        let sampleContentsText: String = "My boy"
+        let sampleText: String = "Note to check: " + Date().dateTimeString()
 
-        let tablesCountBeforeAdding = mainScreen.tablesCount
-        mainScreen.tapNewNoteButton()
+        let cellCountBeforeAdding = self.mainScreen.cellsCount
         
-        noteViewScreen.fillSampleTextToFields(titleText: sampleTitleText, contentsText: sampleContentsText)
-        noteViewScreen.pressBackButton()
+        self.mainScreen.tapNewNoteButton()
+        self.noteViewScreen.fillSampleTextToFields(titleText: sampleText, contentsText: sampleText)
+        self.noteViewScreen.pressBackButton()
         
-        let cell = mainScreen.tables.cells.element(boundBy: 0)
-        ()
-        XCTAssertEqual((tablesCountBeforeAdding + UInt(1)), mainScreen.tablesCount, "Hey")
+        XCTAssertEqual((cellCountBeforeAdding + UInt(1)), self.mainScreen.cellsCount)
     }
     
     func testThatItDeletesNote() {
+        let text: String = "Note I'm about to delete. " + Date().dateTimeString()
         
-        self.addNewSampleNote()
+        XCTAssertFalse(findElementCellContaining(text: text).exists)
 
-//        let createdNoteCell = app.tables.cells.element(boundBy: 0)
-//        XCTAssertEqual(createdNoteCell.label, sampleContentsText)
+        self.mainScreen.tapNewNoteButton()
+        self.noteViewScreen.enterTextToElement(.title, text: text)
+        self.noteViewScreen.pressBackButton()
+        ()
+        XCTAssertTrue(findElementCellContaining(text: text).exists)
 
-        self.deleteNote()
+        self.deleteNote(boundBy: 0)
+        
+        XCTAssertFalse(findElementCell(withText: "Title: \(text)").exists)
+        XCTAssertFalse(findElementCellContaining(text: text).exists)
     }
     
-    func testThatItCreatesEmptyNotes() {
+    func testThatItCreatesNotesWithNoTitle() {
+        let accessibilityLabel = "Note has no title"
+        
         var cell: XCUIElement {
-            return app.tables.cells.element(boundBy: 0).staticTexts["Note has no title"]
+            return app.tables.cells.element(boundBy: 0).staticTexts[accessibilityLabel]
         }
         
         // Given
-        self.deleteAllNotes()
         XCTAssertFalse(cell.exists)
         
         // When
-        mainScreen.tapNewNoteButton()
-        noteViewScreen.enterTextToElement(.title, text: "a")
-        app/*@START_MENU_TOKEN@*/.keys["delete"]/*[[".keyboards",".keys[\"Видалити\"]",".keys[\"delete\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
-        noteViewScreen.pressBackButton()
+        self.mainScreen.tapNewNoteButton()
+        self.noteViewScreen.enterTextToElement(.contents, text: "a")
+        self.app.keys["delete"].tap()
+        self.noteViewScreen.pressBackButton()
         
         // Then
         XCTAssertTrue(cell.exists)
         ()
+    }
+    
+    func testThatItDoesntCreateNoteWhenNoTextWasEntered() {
+        let cellsCountBefore = mainScreen.cellsCount
+        
+        self.mainScreen.tapNewNoteButton()
+        self.noteViewScreen.pressBackButton()
+        
+        let cellsCountAfter = mainScreen.cellsCount
+        XCTAssertEqual(cellsCountBefore, cellsCountAfter)
     }
     
     func testThatItDeletesAllNotes() {
@@ -68,8 +83,8 @@ class NotesTestTaskUITests: BaseTest {
         
         // When
         while app.tables.cells.count > 0 {
-            mainScreen.tapOnCell(boundBy: 0)
-            noteViewScreen.deleteNote()
+            self.mainScreen.tapOnCell(boundBy: 0)
+            self.noteViewScreen.deleteNote()
             XCTAssertEqual(tableCount, app.tables.cells.count + UInt(1))
             tableCount = app.tables.cells.count
         }
@@ -99,6 +114,33 @@ class NotesTestTaskUITests: BaseTest {
         XCTAssertEqual(notesCount, notesNavBarCount)
     }
     
+    func testThatItCreatesLargeNotes() {
+        
+    }
+    
+    func testThatItMovesNotesToBeginningWhenBeingEdited() {
+        let text = Date().dateTimeString()
+        let count = mainScreen.cellsCount
+        let randomCellIndex = UInt(arc4random_uniform(UInt32(count)))
+        
+        mainScreen.tapOnCell(boundBy: randomCellIndex)
+        noteViewScreen.enterTextToElement(.title, text: text)
+        noteViewScreen.pressBackButton()
+        
+        let cell = findElementCell(withText: text, atIndex: 0)
+        ()
+        XCTAssertTrue(cell.exists)
+        
+    }
+    
+    private func findElementCell(withText text: String, atIndex index: UInt = 0) -> XCUIElement {
+        return app.tables.cells.element(boundBy: index).staticTexts[text]
+    }
+    
+    private func findElementCellContaining(text: String) -> XCUIElement {
+        return app.tables.cells.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", text)).element
+    }
+    
     private func addNewSampleNote(quantity: UInt = 1) {
         for _ in 0 ..< quantity {
             self.mainScreen.tapNewNoteButton()
@@ -107,19 +149,19 @@ class NotesTestTaskUITests: BaseTest {
         }
     }
     
-    private func deleteNote(boundBy: UInt = 0) {
-        mainScreen.tapOnCell(boundBy: 0)
-        noteViewScreen.deleteNote()
+    private func deleteNote(boundBy index: UInt = 0) {
+        self.mainScreen.tapOnCell(boundBy: index)
+        self.noteViewScreen.deleteNote()
     }
     
     private func deleteAllNotes() {
         while app.tables.cells.count > 0 {
-            mainScreen.tapOnCell(boundBy: 0)
-            noteViewScreen.deleteNote()
+            self.mainScreen.tapOnCell(boundBy: 0)
+            self.noteViewScreen.deleteNote()
         }
     }
     
-    func testTest() {
+    func UNUSED_testTest() {
         XCUIDevice.shared().orientation = .portrait
 
         let app = XCUIApplication()
@@ -132,11 +174,6 @@ class NotesTestTaskUITests: BaseTest {
         app.navigationBars["Notes"].buttons["Delete"].tap()
         app.sheets["Delete note"].buttons["Delete"].tap()
         
-        XCUIApplication().navigationBars["Notes (2)"].otherElements["Notes (2)"].tap()
-        XCUIDevice.shared().orientation = .faceUp
-        
-        
-        app.textFields["Title"].typeText("к")
-        app/*@START_MENU_TOKEN@*/.keys["delete"]/*[[".keyboards",".keys[\"Видалити\"]",".keys[\"delete\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+    
     }
 }

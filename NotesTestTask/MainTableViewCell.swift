@@ -14,6 +14,8 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var contentsLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var favoriteView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,6 +30,14 @@ class MainTableViewCell: UITableViewCell {
         
         self.titleLabel.accessibilityLabel = note.title!.isEmpty ? "Note has no title" : "Title: " + note.title!
         self.dateLabel.accessibilityLabel = "Created " + dayModified
+        
+        let appearance: CellAppearance = note.isFavorited ? .highlighted : .regular
+        favoriteView.backgroundColor = appearance.boxViewColor
+        self.backgroundColor = appearance.backgroundColor
+        
+        titleLabel.textColor = (note.title!.isEmpty ? UIColor.gray : UIColor.black)
+        
+        self.favoriteView.layer.cornerRadius = 2.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,5 +45,4 @@ class MainTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
