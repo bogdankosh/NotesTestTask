@@ -26,16 +26,17 @@ class NoteViewController: UIViewController {
         // Dismiss the keyboard by sliding finger down
         contentsTextView.keyboardDismissMode = .interactive
         
-        self.setupUI()
         self.setupContent()
         
-        titleLabel.delegate = self
-        contentsTextView.delegate = self
+        self.titleLabel.delegate = self
+        self.contentsTextView.delegate = self
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.setupUI()
         
         if currentNote != nil {
             let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteCurrentNote))
@@ -45,11 +46,18 @@ class NoteViewController: UIViewController {
 
     func setupUI() {
         // Sets up a text inset for a text view.
-        contentsTextView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        self.contentsTextView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
-        titleLabel.accessibilityLabel = "Title text field"
-        contentsTextView.accessibilityLabel = "Note text view"
+        self.titleLabel.accessibilityLabel = "Title text field"
+        self.contentsTextView.accessibilityLabel = "Note text view"
         
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = false
+        }
+        
+        if currentNote == nil {
+            self.titleLabel.becomeFirstResponder()
+        }
     }
 
     func setupContent() {
@@ -105,7 +113,7 @@ class NoteViewController: UIViewController {
             }
         }
         
-        presentAlert(title: "Delete note", message: "Do you really want to delete the note?", yesHandler: handler)
+        self.presentAlert(title: "Delete note", message: "Do you really want to delete the note? This action cannot be undone.", yesHandler: handler)
     }
     
     func saveContext() {

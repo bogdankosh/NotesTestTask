@@ -10,7 +10,7 @@ import XCTest
 
 class MainScreen: BaseScreen {
     
-    private let button = app.navigationBars["Notes"].buttons["Compose"]
+    private let button = app.navigationBars.buttons["Compose"]
     
     override init() {
         super.init()

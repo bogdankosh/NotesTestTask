@@ -71,8 +71,8 @@ extension ExtensionDelegate: WCSessionDelegate {
         print("I did receive something")
         let notes = applicationContext["notes"] as! [String?]
         print("Count of notes: \(notes.count)")
-        for item in notes {
-            print(item)
+        for _ in notes {
+//            print(item)
         }
         
     }

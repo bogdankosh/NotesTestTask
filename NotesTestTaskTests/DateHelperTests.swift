@@ -28,8 +28,7 @@ class DateHelperTests: XCTestCase {
                                            hour: 12,
                                            minute: 00,
                                            second: 00)
-        let referenceDate = Calendar(identifier: .gregorian).date(from: referenceDateComponents)
-        print(referenceDate)
+        let _ = Calendar(identifier: .gregorian).date(from: referenceDateComponents)
         
         var dayComponent = DateComponents()
         dayComponent.day = 1

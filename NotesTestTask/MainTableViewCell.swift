@@ -16,13 +16,18 @@ class MainTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
     func configureCell(with note: Note) {
-        self.titleLabel.text =      (note.title)!.isEmpty ? "(No title)" : note.title
-        self.contentsLabel.text =   note.contents
-        self.dateLabel.text =       DateHelper.dayModified(note.dateModified! as Date)
+        let dayModified = DateHelper.dayModified(note.dateModified! as Date)
+        
+        self.titleLabel.text =      note.title!.isEmpty ? "(No title)" : note.title
+        self.contentsLabel.text =   note.contents!.isEmpty ? "(No contents)" : note.contents
+        self.dateLabel.text =       dayModified
+        
+        self.titleLabel.accessibilityLabel = note.title!.isEmpty ? "Note has no title" : "Title: " + note.title!
+        self.dateLabel.accessibilityLabel = "Created " + dayModified
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

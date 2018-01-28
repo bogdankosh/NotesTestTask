@@ -20,6 +20,8 @@ class NoteViewScreen: BaseScreen {
     private let titleTextField = app.textFields["Title"]
     private let contentsTextView = app.textViews["Note text view"]
     
+    
+    
     override init() {
         super.init()
         
@@ -32,14 +34,13 @@ class NoteViewScreen: BaseScreen {
     }
     
     func deleteNote() {
-        let deleteButton = BaseScreen.app.navigationBars["Notes"].buttons["Delete"]
+        let deleteButton = BaseScreen.app.navigationBars.buttons["Delete"]
         deleteButton.tap()
-        BaseScreen.app.alerts["Delete note"].buttons["Delete"].tap()
-
+        getDeleteConfirmationButton().tap()
     }
     
-    func fillSampleTextToFields(titleText: String = "That's it folks!",
-                                contentsText: String = "Yes, that's what I'm talking about!") {
+    func fillSampleTextToFields(titleText: String = "Sample title " + Date().dateTimeString(),
+                                contentsText: String = "Sample contents " + Date().dateTimeString()) {
         enterTextToElement(.title, text: titleText)
         enterTextToElement(.contents, text: contentsText)
     }
@@ -48,6 +49,15 @@ class NoteViewScreen: BaseScreen {
         let textElement = getElement(element)
         textElement.tap()
         textElement.typeText(text)
+    }
+    
+    private func getDeleteConfirmationButton() -> XCUIElement {
+        let deleteAlertQuery = BaseScreen.app.alerts["Delete note"].buttons["Delete Note"]
+        let deleteSheetQuery = BaseScreen.app.sheets["Delete note"].buttons["Delete Note"]
+        
+        if deleteAlertQuery.exists { return deleteAlertQuery }
+//         deleteSheetQuery.exists {
+            return deleteSheetQuery
     }
         
     private func getElement(_ element: NoteScreenTextElement) -> XCUIElement {

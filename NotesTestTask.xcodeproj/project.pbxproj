@@ -20,6 +20,7 @@
 		432184FF1F80040F00E84D21 /* Notes.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 432184DF1F80040F00E84D21 /* Notes.app */; };
 		432D695E201BA1550065BF9F /* NoteStoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D695D201BA1550065BF9F /* NoteStoreHelper.swift */; };
 		4338441B201CC1F800AF9C10 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430C072C1F75B3910007E7FD /* DateExtensions.swift */; };
+		4338441C201CD30A00AF9C10 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7AF991F73C2900020C389 /* Extensions.swift */; };
 		434CAA58201BB79F008CACB7 /* BaseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CAA56201BB79F008CACB7 /* BaseScreen.swift */; };
 		434CAA59201BB79F008CACB7 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CAA57201BB79F008CACB7 /* MainScreen.swift */; };
 		434CAA5C201BB83A008CACB7 /* UIXCElementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CAA5B201BB83A008CACB7 /* UIXCElementExtension.swift */; };
@@ -549,6 +550,7 @@
 				4338441B201CC1F800AF9C10 /* DateExtensions.swift in Sources */,
 				434CAA59201BB79F008CACB7 /* MainScreen.swift in Sources */,
 				4392FBF4201B82B7007B3021 /* BaseTest.swift in Sources */,
+				4338441C201CD30A00AF9C10 /* Extensions.swift in Sources */,
 				434CAA5E201BBB53008CACB7 /* NoteViewScreen.swift in Sources */,
 				43B30A25201B7E3F00A59519 /* NotesTestTaskUITests.swift in Sources */,
 				434CAA58201BB79F008CACB7 /* BaseScreen.swift in Sources */,

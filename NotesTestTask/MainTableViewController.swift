@@ -19,24 +19,39 @@ class MainTableViewController: UITableViewController {
     
     var notesStore: [Note] = []
     let noteStoreHelper = NoteStoreHelper()
+    
+    var navigationTitle: String = "" {
+        didSet {
+            self.title = navigationTitle
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
-        addSampleData()
-        initializeDataFromCoreData()
+        self.setupUI()
+        
+        self.addSampleData()
+        self.initializeDataFromCoreData()
         // transferDataToWatch()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        initializeDataFromCoreData()
+        self.setupUI()
+        self.initializeDataFromCoreData()
     }
     
     private func setupUI() {
-        title = "Notes"
+        self.navigationTitle = "Notes"
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+
+        }
         
         // TODO: Deleting notes from table view.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -51,7 +66,8 @@ class MainTableViewController: UITableViewController {
             print(error)
         }
         
-        notesStore = noteStoreHelper.sort(store: notesStore, by: .newestFirst)
+        self.notesStore = noteStoreHelper.sort(store: notesStore, by: .newestFirst)
+        self.navigationTitle = "Notes " + "(\(notesStore.count))"
     }
     
     private func addSampleData() {
@@ -122,9 +138,13 @@ class MainTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let backItem = UIBarButtonItem()
+        backItem.title = "Notes"
+        navigationItem.backBarButtonItem = backItem
+        
+        let destinationViewController = segue.destination as? NoteViewController
         switch segue.identifier! {
         case kSegueShowNote:
-            let destinationViewController = segue.destination as? NoteViewController
             destinationViewController?.uuid = notesStore[tableView.indexPathForSelectedRow!.row].key
         case kSegueNewNote: ()
         default: fatalError("Called non-existent segue")
