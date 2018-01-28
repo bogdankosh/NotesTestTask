@@ -9,6 +9,7 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
+    
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentsLabel: UILabel!
@@ -24,11 +25,11 @@ class MainTableViewCell: UITableViewCell {
     func configureCell(with note: Note) {
         let dayModified = DateHelper.dayModified(note.dateModified! as Date)
         
-        self.titleLabel.text =      note.title!.isEmpty ? "(No title)" : note.title
-        self.contentsLabel.text =   note.contents!.isEmpty ? "(No contents)" : note.contents
+        self.titleLabel.text =      note.title!.isEmpty ? LabelFactory.EmptyFields.noTitle : note.title
+        self.contentsLabel.text =   note.contents!.isEmpty ? LabelFactory.EmptyFields.noContents : note.contents
         self.dateLabel.text =       dayModified
         
-        self.titleLabel.accessibilityLabel = note.title!.isEmpty ? "Note has no title" : "Title: " + note.title!
+        self.titleLabel.accessibilityLabel = note.title!.isEmpty ? LabelFactory.Accessibility.noTitle : "Title: " + note.title!
         self.dateLabel.accessibilityLabel = "Created " + dayModified
         
         let appearance: CellAppearance = note.isFavorited ? .highlighted : .regular

@@ -13,8 +13,7 @@ class NotesTestTaskUITests: BaseTest {
     let mainScreen = MainScreen()
     let noteViewScreen = NoteViewScreen()
     
-    func testThatItShowCreatedNote() {
-        
+    func testThatItShowsCreatedNote() {
         let sampleText: String = "Note to check: " + Date().dateTimeString()
 
         let cellCountBeforeAdding = self.mainScreen.cellsCount
@@ -23,7 +22,11 @@ class NotesTestTaskUITests: BaseTest {
         self.noteViewScreen.fillSampleTextToFields(titleText: sampleText, contentsText: sampleText)
         self.noteViewScreen.pressBackButton()
         
-        XCTAssertEqual((cellCountBeforeAdding + UInt(1)), self.mainScreen.cellsCount)
+        let cell = findElementCellContaining(text: sampleText)
+        
+        XCTAssertEqual((cellCountBeforeAdding + 1), self.mainScreen.cellsCount)
+        XCTAssertTrue(cell.exists)
+        
     }
     
     func testThatItDeletesNote() {
@@ -34,18 +37,16 @@ class NotesTestTaskUITests: BaseTest {
         self.mainScreen.tapNewNoteButton()
         self.noteViewScreen.enterTextToElement(.title, text: text)
         self.noteViewScreen.pressBackButton()
-        ()
+        
         XCTAssertTrue(findElementCellContaining(text: text).exists)
 
         self.deleteNote(boundBy: 0)
         
-        XCTAssertFalse(findElementCell(withText: "Title: \(text)").exists)
         XCTAssertFalse(findElementCellContaining(text: text).exists)
     }
     
     func testThatItCreatesNotesWithNoTitle() {
-        let accessibilityLabel = "Note has no title"
-        
+        let accessibilityLabel = LabelFactory.Accessibility.noTitle
         var cell: XCUIElement {
             return app.tables.cells.element(boundBy: 0).staticTexts[accessibilityLabel]
         }
@@ -61,15 +62,17 @@ class NotesTestTaskUITests: BaseTest {
         
         // Then
         XCTAssertTrue(cell.exists)
-        ()
     }
     
     func testThatItDoesntCreateNoteWhenNoTextWasEntered() {
+        // Given
         let cellsCountBefore = mainScreen.cellsCount
         
+        // When
         self.mainScreen.tapNewNoteButton()
         self.noteViewScreen.pressBackButton()
         
+        // Then
         let cellsCountAfter = mainScreen.cellsCount
         XCTAssertEqual(cellsCountBefore, cellsCountAfter)
     }
@@ -77,68 +80,60 @@ class NotesTestTaskUITests: BaseTest {
     func testThatItDeletesAllNotes() {
         
         // Given
-            self.addNewSampleNote(quantity: 3)
-        
-        var tableCount = app.tables.cells.count
+        self.addNewSampleNote(quantity: 3)
         
         // When
-        while app.tables.cells.count > 0 {
-            self.mainScreen.tapOnCell(boundBy: 0)
-            self.noteViewScreen.deleteNote()
-            XCTAssertEqual(tableCount, app.tables.cells.count + UInt(1))
-            tableCount = app.tables.cells.count
+        while mainScreen.cellsCount > 0 {
+            self.deleteNote(boundBy: 0)
         }
         
         // Then
-        XCTAssertEqual(app.tables.cells.count, 0)
+        XCTAssertEqual(mainScreen.cellsCount, 0)
     }
     
     func testThatItCountsNotesCorrectly() {
         
-        var notesNavBarCount: UInt {
+        var notesNavBarCount: Int {
             let onlyNumbersRegex = "(?:prefix)?([0-9]+)"
-            let label = app.navigationBars.otherElements.matching(NSPredicate(format: "label CONTAINS 'Notes ('")).element(boundBy: 0).label
+            let label = app.navigationBars.otherElements.matching(NSPredicate(format: "label CONTAINS 'Notes ('")).firstMatch.label
             let numberChars = label.matchesForRegexInText(regex: onlyNumbersRegex).first!
-            return UInt(numberChars)!
+            return Int(numberChars)!
         }
-        
-        var notesCount: UInt {
+        ()
+        var notesCount: Int {
             return app.tables.cells.count
         }
+        XCTAssertEqual(notesCount, notesNavBarCount)
+        ()
+        self.addNewSampleNote(quantity: 1)
         ()
         XCTAssertEqual(notesCount, notesNavBarCount)
-        
-        self.addNewSampleNote(quantity: 3)
-        
-        ()
-        XCTAssertEqual(notesCount, notesNavBarCount)
-    }
-    
-    func testThatItCreatesLargeNotes() {
-        
     }
     
     func testThatItMovesNotesToBeginningWhenBeingEdited() {
         let text = Date().dateTimeString()
         let count = mainScreen.cellsCount
-        let randomCellIndex = UInt(arc4random_uniform(UInt32(count)))
+        let randomCellIndex = Int(arc4random_uniform(UInt32(count)))
         
-        mainScreen.tapOnCell(boundBy: randomCellIndex)
-        noteViewScreen.enterTextToElement(.title, text: text)
-        noteViewScreen.pressBackButton()
+        self.mainScreen.tapOnCell(boundBy: randomCellIndex)
+        self.noteViewScreen.enterTextToElement(.title, text: text)
+        self.noteViewScreen.pressBackButton()
         
-        let cell = findElementCell(withText: text, atIndex: 0)
-        ()
+        let cell = findElementCellContaining(text: text, atIndex: 0)
         XCTAssertTrue(cell.exists)
         
     }
     
-    private func findElementCell(withText text: String, atIndex index: UInt = 0) -> XCUIElement {
+    private func findElementCell(withText text: String, atIndex index: Int = 0) -> XCUIElement {
         return app.tables.cells.element(boundBy: index).staticTexts[text]
     }
     
     private func findElementCellContaining(text: String) -> XCUIElement {
         return app.tables.cells.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", text)).element
+    }
+    
+    private func findElementCellContaining(text: String, atIndex index: Int = 0) -> XCUIElement {
+        return app.tables.cells.element(boundBy: index).staticTexts.matching(NSPredicate(format: "label CONTAINS %@", text)).element
     }
     
     private func addNewSampleNote(quantity: UInt = 1) {
@@ -149,7 +144,7 @@ class NotesTestTaskUITests: BaseTest {
         }
     }
     
-    private func deleteNote(boundBy index: UInt = 0) {
+    private func deleteNote(boundBy index: Int = 0) {
         self.mainScreen.tapOnCell(boundBy: index)
         self.noteViewScreen.deleteNote()
     }
@@ -159,21 +154,5 @@ class NotesTestTaskUITests: BaseTest {
             self.mainScreen.tapOnCell(boundBy: 0)
             self.noteViewScreen.deleteNote()
         }
-    }
-    
-    func UNUSED_testTest() {
-        XCUIDevice.shared().orientation = .portrait
-
-        let app = XCUIApplication()
-        app.navigationBars["Notes"].buttons["Compose"].tap()
-        XCUIDevice.shared().orientation = .faceUp
-        XCUIDevice.shared().orientation = .portrait
-        app.textFields["Title"].tap()
-        
-        app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["Yes, I'm really sorry, but I don't need you no more"].tap()
-        app.navigationBars["Notes"].buttons["Delete"].tap()
-        app.sheets["Delete note"].buttons["Delete"].tap()
-        
-    
     }
 }

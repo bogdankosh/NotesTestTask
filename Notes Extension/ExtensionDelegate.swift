@@ -61,7 +61,7 @@ extension ExtensionDelegate: WCSessionDelegate {
     
     func setupWatchConnectivity() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = self
             session.activate()
         }

@@ -89,7 +89,7 @@ extension AppDelegate: WCSessionDelegate {
     
     func sessionDidDeactivate(_ session: WCSession) {
         print("WC Session did deactivate")
-        WCSession.default().activate()
+        WCSession.default.activate()
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
@@ -98,7 +98,7 @@ extension AppDelegate: WCSessionDelegate {
     
     func setupWatchConnectivity() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = self
             session.activate()
         }

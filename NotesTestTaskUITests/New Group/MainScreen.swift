@@ -18,7 +18,7 @@ class MainScreen: BaseScreen {
 //        visible()
     }
     
-    var cellsCount: UInt {
+    var cellsCount: Int {
         return BaseScreen.app.tables.cells.count
     }
     
@@ -30,7 +30,7 @@ class MainScreen: BaseScreen {
         button.tap()
     }
     
-    func tapOnCell(boundBy index: UInt) {
+    func tapOnCell(boundBy index: Int) {
         tables.cells.element(boundBy: index).tap()
     }
 

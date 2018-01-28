@@ -95,14 +95,14 @@ class NoteViewController: UIViewController {
                 currentNote.contents = contentsTextView.text
                 
                 
-                currentNote.dateModified = NSDate()
+                currentNote.dateModified = NSDate() as Date
             } else {
                 let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! Note
                 note.title = titleLabel.text
                 note.contents = contentsTextView.text
                 
                 note.isFavorited = false
-                note.dateModified = NSDate()
+                note.dateModified = NSDate() as Date
                 note.key = UUID().uuidString
             }
             saveContext()

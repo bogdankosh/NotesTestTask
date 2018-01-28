@@ -21,7 +21,7 @@ struct SampleGeneration {
             note.contents = contents[index]
             note.key = UUID().uuidString
             notes.append(note)
-            note.dateModified = DateHelper.dateFromTodayByAdding(day: -index) as NSDate
+//            note.dateModified = DateHelper.dateFromTodayByAdding(day: -index) as NSDate
         }
         return notes
     }

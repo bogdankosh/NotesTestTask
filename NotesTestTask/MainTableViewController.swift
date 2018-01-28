@@ -82,7 +82,7 @@ class MainTableViewController: UITableViewController {
                 note.title = titles[index]
                 note.contents = contents[index]
                 note.key = UUID().uuidString
-                note.dateModified = DateHelper.dateFromTodayByAdding(day: -index) as NSDate
+                note.dateModified = DateHelper.dateFromTodayByAdding(day: -index)
             }
             
             defaults.set(true, forKey: kNotFirstLaunchKey)
