@@ -242,10 +242,10 @@
 			isa = PBXGroup;
 			children = (
 				434CAA5A201BB7AE008CACB7 /* Screens */,
-				43B30A24201B7E3F00A59519 /* NotesTestTaskUITests.swift */,
-				43B30A26201B7E3F00A59519 /* Info.plist */,
 				4392FBF3201B82B7007B3021 /* BaseTest.swift */,
+				43B30A24201B7E3F00A59519 /* NotesTestTaskUITests.swift */,
 				434CAA5B201BB83A008CACB7 /* UIXCElementExtension.swift */,
+				43B30A26201B7E3F00A59519 /* Info.plist */,
 			);
 			path = NotesTestTaskUITests;
 			sourceTree = "<group>";
